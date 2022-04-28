@@ -118,26 +118,43 @@ public class Graph<T> implements GraphInterface<T> {
     // traversal to begin at node A
 
     /**
-     * TODO 'use queue to keep track of vertices that still need to be visited'
-     * beginning at root, visits each of root's neighbors (remember, directed graph), then each of their siblings...
-     * traversal: ABDEGFHCI
+     * traversal: ABDEGFHCI (013465728) TODO? should we somehow display the letters instead of indices?
      * computes, displays, and returns breadth-first traversal of this graph
-     * @return a generic stack of ordered elements traversed
+     * @return a queue of elements traversed in order
      */
-    public Queue<T> breadthFirst() {
-        Queue<T> traversal = new LinkedList<>();
+    public Queue<Integer> breadthFirst(int start) {
+        Queue<Integer> vertTraversal = new LinkedList<>();
+        Queue<Integer> traversal = new LinkedList<>();
+        String traversalString = "";
+        boolean[] visited = new boolean[labels.length];
 
+        visited[start] = true;
+        vertTraversal.add(start);
+
+        while (vertTraversal.size() != 0) {
+            start = vertTraversal.poll();
+            traversal.add(start);
+            traversalString += start + ", ";
+
+            for (Integer i : neighbors(start)) {
+                if (!visited[i]) {
+                    visited[i] = true;
+                    vertTraversal.add(i);
+                }
+            }
+        }
+        System.out.println(traversalString);
         return traversal;
     }
 
     /**
      * TODO 'uses stack to expand the deepest unvisited nodes'
      * beginning at root, visits first neighbor then that node's neighbor until no further, then backtracks...
-     * traversal: ABEFCHIDG
+     * traversal: ABEFCHIDG (014527836) TODO? should we somehow display the letters instead of indices?
      * computes, displays, and returns depth-first traversal of this graph
-     * @return a generic stack of ordered elements traversed
+     * @return a stack of elements traversed in order
      */
-    public Stack<T> depthFirst() {
+    public Stack<T> depthFirst(int start) {
         Stack<T> traversal = new Stack<>();
 
         return traversal;

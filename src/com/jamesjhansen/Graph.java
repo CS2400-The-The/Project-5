@@ -1,5 +1,7 @@
 package com.jamesjhansen;
 
+import java.util.Stack;
+
 /**
  * array-based implementation of Graph ADT
  * @param <T> generically-typed
@@ -13,12 +15,14 @@ public class Graph<T extends Comparable<? super T>> implements GraphInterface<T>
     private T[] labels;
 
     /**
-     * constructors
+     * constructor
      */
     public Graph(int n) {
         edges = new boolean[n][n];
         labels = (T[]) new Object[n];
     }
+
+    // class methods
 
     /**
      * returns label given vertex
@@ -102,4 +106,35 @@ public class Graph<T extends Comparable<? super T>> implements GraphInterface<T>
     public int size() {
         return labels.length;
     }
+
+    // project methods
+
+    // TODO: design the following two methods for the given graph...
+    // The graph: {V, E} where
+    // V={ A, B, C, D, E, F, G, H, I },
+    // E = { (A,B), (A, D), (A, E), (B, E), (D, G), (E, F), (E, H), (G, H), (F, C), (F, H), (H, I), (C, B), (I, F) }
+    // traversal to begin at node A
+
+    /**
+     * TODO
+     * computes, displays, and returns breadth-first traversal of this graph
+     * @return a generic stack of ordered elements traversed
+     */
+    public Stack<T> breadthFirst() {
+        Stack<T> traversal = new Stack<>();
+
+        return traversal;
+    }
+
+    /**
+     * TODO
+     * computes, displays, and returns depth-first traversal of this graph
+     * @return a generic stack of ordered elements traversed
+     */
+    public Stack<T> depthFirst() {
+        Stack<T> traversal = new Stack<>();
+
+        return traversal;
+    }
+
 }

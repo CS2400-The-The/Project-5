@@ -1,5 +1,7 @@
 package com.jamesjhansen;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -116,18 +118,22 @@ public class Graph<T extends Comparable<? super T>> implements GraphInterface<T>
     // traversal to begin at node A
 
     /**
-     * TODO
+     * TODO 'use queue to keep track of vertices that still need to be visited'
+     * beginning at root, visits each of root's neighbors (remember, directed graph), then each of their siblings...
+     * traversal: ABDEGFHCI
      * computes, displays, and returns breadth-first traversal of this graph
      * @return a generic stack of ordered elements traversed
      */
-    public Stack<T> breadthFirst() {
-        Stack<T> traversal = new Stack<>();
+    public Queue<T> breadthFirst() {
+        Queue<T> traversal = new LinkedList<>();
 
         return traversal;
     }
 
     /**
-     * TODO
+     * TODO 'uses stack to expand the deepest unvisited nodes'
+     * beginning at root, visits first neighbor then that node's neighbor until no further, then backtracks...
+     * traversal: ABEFCHIDG
      * computes, displays, and returns depth-first traversal of this graph
      * @return a generic stack of ordered elements traversed
      */

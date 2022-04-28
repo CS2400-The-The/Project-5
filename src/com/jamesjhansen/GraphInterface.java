@@ -3,7 +3,7 @@ package com.jamesjhansen;
 /**
  * generically-typed interface for Graph ADT
  */
-public interface GraphInterface<T extends Comparable<? super T>> {
+public interface GraphInterface<T> {
 
     public T getLabel(int vertex);
     public boolean isEdge(int source, int target);

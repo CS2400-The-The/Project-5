@@ -8,7 +8,7 @@ import java.util.Stack;
  * array-based implementation of Graph ADT
  * @param <T> generically-typed
  */
-public class Graph<T extends Comparable<? super T>> implements GraphInterface<T> {
+public class Graph<T> implements GraphInterface<T> {
 
     /**
      * instance variables

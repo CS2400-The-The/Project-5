@@ -111,20 +111,13 @@ public class Graph<T> implements GraphInterface<T> {
 
     // project methods
 
-    // TODO: design the following two methods for the given graph...
-    // The graph: {V, E} where
-    // V={ A, B, C, D, E, F, G, H, I },
-    // E = { (A,B), (A, D), (A, E), (B, E), (D, G), (E, F), (E, H), (G, H), (F, C), (F, H), (H, I), (C, B), (I, F) }
-    // traversal to begin at node A
-
     /**
-     * traversal: ABDEGFHCI (013465728) TODO? should we somehow display the letters instead of indices?
      * computes, displays, and returns breadth-first traversal of this graph
+     * traversal: ABDEGFHCI (013465728) TODO? should we somehow display the letters instead of indices?
      * @return a queue of elements traversed in order
      */
-    public Queue<Integer> breadthFirst(int start) {
+    public String breadthFirst(int start) {
         Queue<Integer> vertTraversal = new LinkedList<>();
-        Queue<Integer> traversal = new LinkedList<>();
         String traversalString = "";
         boolean[] visited = new boolean[labels.length];
 
@@ -133,7 +126,6 @@ public class Graph<T> implements GraphInterface<T> {
 
         while (vertTraversal.size() != 0) {
             start = vertTraversal.poll();
-            traversal.add(start);
             traversalString += start + ", ";
 
             for (Integer i : neighbors(start)) {
@@ -143,21 +135,38 @@ public class Graph<T> implements GraphInterface<T> {
                 }
             }
         }
-        System.out.println(traversalString);
-        return traversal;
+        return traversalString;
     }
 
     /**
-     * TODO 'uses stack to expand the deepest unvisited nodes'
-     * beginning at root, visits first neighbor then that node's neighbor until no further, then backtracks...
-     * traversal: ABEFCHIDG (014527836) TODO? should we somehow display the letters instead of indices?
      * computes, displays, and returns depth-first traversal of this graph
+     * traversal: AEHIFCBDG (047852136) TODO? should we somehow display the letters instead of indices?
      * @return a stack of elements traversed in order
      */
-    public Stack<T> depthFirst(int start) {
-        Stack<T> traversal = new Stack<>();
+    public String depthFirst(int start) {
+        Stack<Integer> vertTraversal = new Stack<>();
+        String traversalString = "";
+        boolean[] visited = new boolean[labels.length];
 
-        return traversal;
+        vertTraversal.push(start);
+
+        while (!vertTraversal.empty()) {
+            start = vertTraversal.peek();
+            vertTraversal.pop();
+
+            if (!visited[start]) {
+                traversalString += start + ", ";
+                visited[start] = true;
+            }
+
+            for (Integer i : neighbors(start)) {
+                if (!visited[i])
+                    vertTraversal.push(i);
+            }
+        }
+        return traversalString;
     }
+
+
 
 }

@@ -11,10 +11,10 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        // TODO
         // 1) instantiate the following graph:
         // V={ A, B, C, D, E, F, G, H, I },
         // E = { (A,B), (A, D), (A, E), (B, E), (D, G), (E, F), (E, H), (G, H), (F, C), (F, H), (H, I), (C, B), (I, F) }
+        // traversal to begin at node A
 
         Graph g = new Graph(9);
         g.addEdge(0,1);
@@ -31,11 +31,11 @@ public class Main {
         g.addEdge(7,8);
         g.addEdge(8,5);
 
-        g.breadthFirst(0);
+        // 2) call breadthFirst on graph
+        System.out.println("Breadth-First traversal: " + g.breadthFirst(0));
 
-        // g.depthFirst(0);
+        // 3) call depthFirst on graph
+        System.out.println("Depth-First traversal: " + g.depthFirst(0));
 
-        // 2) call breadth-first on it, ensuring traversal is displayed nicely
-        // 3) ditto for depth-first
     }
 }

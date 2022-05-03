@@ -127,7 +127,7 @@ public class Graph<T> implements GraphInterface<T> {
 
         while (vertTraversal.size() != 0) {
             start = vertTraversal.poll();
-            traversalString += start + " ";
+            traversalString += this.getLabel(start) + " ";
 
             for (Integer i : neighbors(start)) {
                 if (!visited[i]) {
@@ -156,7 +156,7 @@ public class Graph<T> implements GraphInterface<T> {
             vertTraversal.pop();
 
             if (!visited[start]) {
-                traversalString += start + " ";
+                traversalString += this.getLabel(start) + " ";
                 visited[start] = true;
             }
 

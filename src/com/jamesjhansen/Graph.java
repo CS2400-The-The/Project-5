@@ -3,6 +3,7 @@ package com.jamesjhansen;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
+import java.util.Arrays;
 
 /**
  * array-based implementation of Graph ADT
@@ -167,6 +168,36 @@ public class Graph<T> implements GraphInterface<T> {
         return traversalString;
     }
 
+    public String depthFirst2(int start) {
+        Stack<Integer> vertexStack = new Stack<>();
+        String traversalOrder = "";
+        boolean[] visited = new boolean[labels.length];   
+
+        visited[start] = true;
+        vertexStack.push(start);
+        traversalOrder += this.getLabel(start) + " ";
+
+
+        while (!vertexStack.isEmpty()) {
+            
+            int topVertex = vertexStack.peek();            //vertex at top of the stack
+            int[] neighbors = this.neighbors(topVertex);   //array of topvertex's neighbors
+            Arrays.sort(neighbors);                        //sort for alphabetical order 
+
+            for (int i = 0; i < neighbors.length; i++) {
+                if (!visited[neighbors[i]]) {
+                    visited[neighbors[i]] = true;
+                    vertexStack.push(neighbors[i]);
+                    traversalOrder += this.getLabel(neighbors[i]) + " ";
+                    break;
+                } else {
+                    vertexStack.pop();
+                }
+            }
+        }
+        return traversalOrder;
+
+    } //end depthFirst2
 
 
 }

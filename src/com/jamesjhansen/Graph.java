@@ -127,7 +127,7 @@ public class Graph<T> implements GraphInterface<T> {
 
         while (vertTraversal.size() != 0) {
             start = vertTraversal.poll();
-            traversalString += start + " ";
+            traversalString += this.getLabel(start) + " ";
 
             for (Integer i : neighbors(start)) {
                 if (!visited[i]) {
@@ -145,30 +145,6 @@ public class Graph<T> implements GraphInterface<T> {
      * @return a stack of elements traversed in order
      */
     public String depthFirst(int start) {
-        Stack<Integer> vertTraversal = new Stack<>();
-        String traversalString = "";
-        boolean[] visited = new boolean[labels.length];
-
-        vertTraversal.push(start);
-
-        while (!vertTraversal.empty()) {
-            start = vertTraversal.peek();
-            vertTraversal.pop();
-
-            if (!visited[start]) {
-                traversalString += start + " ";
-                visited[start] = true;
-            }
-
-            for (Integer i : neighbors(start)) {
-                if (!visited[i])
-                    vertTraversal.push(i);
-            }
-        }
-        return traversalString;
-    }
-
-    public String depthFirst2(int start) {
         Stack<Integer> vertexStack = new Stack<>();
         String traversalOrder = "";
         boolean[] visited = new boolean[labels.length];   
@@ -182,6 +158,10 @@ public class Graph<T> implements GraphInterface<T> {
             
             int topVertex = vertexStack.peek();            //vertex at top of the stack
             int[] neighbors = this.neighbors(topVertex);   //array of topvertex's neighbors
+
+            if (neighbors.length == 0) {                   //if vertex has no neighbors, pop it
+                vertexStack.pop();
+            }
             Arrays.sort(neighbors);                        //sort for alphabetical order 
 
             for (int i = 0; i < neighbors.length; i++) {
@@ -190,7 +170,7 @@ public class Graph<T> implements GraphInterface<T> {
                     vertexStack.push(neighbors[i]);
                     traversalOrder += this.getLabel(neighbors[i]) + " ";
                     break;
-                } else {
+                } else if (i == neighbors.length - 1) {
                     vertexStack.pop();
                 }
             }

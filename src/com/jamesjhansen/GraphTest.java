@@ -7,9 +7,22 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * TODO
  * contains unit tests for methods in Graph class
+ * 
+ * 1. 3x3 graph
+ * 
+ * 2. Empty Graph
+ * 
+ * 3. 2x2 graph, one unconnected node
+ * 
+ * 4. 2x2 graph, nothing connected
+ * 
+ * 5. 3x3 graph, only once connecting path
+ * 
+ * 6. 2x2 graph, one with a cycle
  */
 public class GraphTest {
-
+    
+    //3x3 Random Graph
     public static void graph1(Graph graph1) {
 
         graph1.setLabel(0, "A");
@@ -34,6 +47,70 @@ public class GraphTest {
         graph1.addEdge(6, 8);
         graph1.addEdge(8, 1);
         graph1.addEdge(8, 2);
+
+    }
+
+    //2x2 graph, 3 nodes connecting and one disconnected
+    public static void graph3(Graph graph1) {
+
+        graph1.setLabel(0, "A");
+        graph1.setLabel(1, "B");
+        graph1.setLabel(2, "C");
+        graph1.setLabel(3, "D");
+
+        graph1.addEdge(0, 1);
+        graph1.addEdge(0, 2);
+
+
+    }
+
+    //2x2 graph, nothing connected
+    public static void graph4(Graph graph1) {
+
+        graph1.setLabel(0, "A");
+        graph1.setLabel(1, "B");
+        graph1.setLabel(2, "C");
+        graph1.setLabel(3, "D");
+
+    }
+
+    //3x3 Graph with one connecting line
+    public static void graph5(Graph graph1) {
+
+        graph1.setLabel(0, "A");
+        graph1.setLabel(1, "B");
+        graph1.setLabel(2, "C");
+        graph1.setLabel(3, "D");
+        graph1.setLabel(4, "E");
+        graph1.setLabel(5, "F");
+        graph1.setLabel(6, "G");
+        graph1.setLabel(7, "H");
+        graph1.setLabel(8, "I");
+
+        graph1.addEdge(0, 1);
+        graph1.addEdge(1, 2);
+        graph1.addEdge(2, 3);
+        graph1.addEdge(3, 4);
+        graph1.addEdge(4, 5);
+        graph1.addEdge(5, 6);
+        graph1.addEdge(6, 7);
+        graph1.addEdge(7, 8);
+
+    }
+
+    //2x2 graph, full cycle
+    public static void graph6(Graph graph1) {
+
+        graph1.setLabel(0, "A");
+        graph1.setLabel(1, "B");
+        graph1.setLabel(2, "C");
+        graph1.setLabel(3, "D");
+
+        graph1.addEdge(0, 1);
+        graph1.addEdge(1, 2);
+        graph1.addEdge(2, 3);
+        graph1.addEdge(3, 0);
+
 
     }
     
@@ -71,6 +148,79 @@ public class GraphTest {
         String resultant1 = testGraph1.breadthFirst(0);
         System.out.println("Resulting traversal order: " + resultant1);
         assertTrue(resultant1.equals(first));
+
+        //Test 2
+        /*Graph testGraph2 = new Graph2(4);
+        graph2(testGraph2);
+
+        String first2 = "";
+        System.out.println("Test 2: Empty Graph");
+        System.out.println("All possible Breadth First Traversals: \n" +
+        first2);
+
+        String resultant2 = testGraph2.breadthFirst(0);
+        System.out.println("Resulting traversal order: " + resultant1);
+        assertTrue(resultant2.equals(first2));
+        */
+
+        //Test 3
+        Graph testGraph3 = new Graph(4);
+        graph3(testGraph3);
+
+        String first3 = "A B C ";
+        String second3 = "A C B ";
+
+        System.out.println("Test 3: Graph with traversals starting at A and one unconnected node");
+        System.out.println("All possible Breadth First Traversals: \n" +
+        first3 + "\n" + second3);
+
+        String resultant3 = testGraph3.breadthFirst(0);
+        System.out.println("Resulting traversal order: " + resultant3);
+        assertTrue(resultant3.equals(first3));
+
+        //Test 4
+        Graph testGraph4 = new Graph(4);
+        graph4(testGraph4);
+
+        String first4 = "A ";
+
+        System.out.println("Test 4: Graph with four nodes but nothing connected");
+        System.out.println("All possible Breadth First Traversals: \n" +
+        first4);
+
+        String resultant4 = testGraph4.breadthFirst(0);
+        System.out.println("Resulting traversal order: " + resultant4 +"\n");
+        assertTrue(resultant4.equals(first4));
+
+        //Test 5
+        Graph testGraph5 = new Graph(9);
+        graph5(testGraph5);
+
+        String first5 = "A B C D E F G H I ";
+
+        System.out.println("Test 5: Graph with 9 nodes but only one correct path");
+        System.out.println("All possible Breadth First Traversals: \n" +
+        first5);
+
+        String resultant5 = testGraph5.breadthFirst(0);
+        System.out.println("Resulting traversal order: " + resultant5 +"\n");
+        assertTrue(resultant5.equals(first5));
+
+        //Test 6
+        Graph testGraph6 = new Graph(4);
+        graph6(testGraph6);
+
+        String first6 = "A B C D ";
+
+        System.out.println("Test 6: Graph with 4 nodes but one full cycle");
+        System.out.println("All possible Breadth First Traversals: \n" +
+        first6);
+
+        String resultant6 = testGraph6.breadthFirst(0);
+        System.out.println("Resulting traversal order: " + resultant6 +"\n");
+        assertTrue(resultant6.equals(first6));
+
+
 
     }
     @Test

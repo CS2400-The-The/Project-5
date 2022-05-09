@@ -118,6 +118,7 @@ public class Graph<T> implements GraphInterface<T> {
      * @return a queue of elements traversed in order
      */
     public String breadthFirst(int start) {
+    
         Queue<Integer> vertTraversal = new LinkedList<>();
         String traversalString = "";
         boolean[] visited = new boolean[labels.length];

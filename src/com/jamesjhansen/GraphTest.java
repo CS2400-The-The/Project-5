@@ -157,6 +157,14 @@ public class GraphTest {
 
         System.out.println("Test 1: Random 9 node graph");
         System.out.println("Expected breadth traversal: " + expected1);
+        System.out.println("Graph Image:\n" + 
+                           "H <- B <- C \n" +
+                           "^    ^    | \n" +
+                           "|    |    V \n" +
+                           "G -> I <- F \n" +
+                           "|         | \n" +
+                           "V   \\   \\ V \n" +
+                           "D    A -> E \n");
 
         String resultant1 = testGraph1.breadthFirst(0);
         System.out.println("Resulting traversal order: " + resultant1);
@@ -268,6 +276,14 @@ public class GraphTest {
 
         System.out.println("Test 1: Random 9 node graph");
         System.out.println("Expected depth traversal: " + expected1);
+        System.out.println("Graph Image:\n" + 
+                           "H <- B <- C \n" +
+                           "^    ^    | \n" +
+                           "|    |    V \n" +
+                           "G -> I <- F \n" +
+                           "|         | \n" +
+                           "V   \\   \\ V \n" +
+                           "D    A -> E \n");
 
         String resultant1 = testGraph1.depthFirst(0);
         System.out.println("Resulting traversal order: " + resultant1);

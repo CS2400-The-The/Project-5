@@ -114,11 +114,10 @@ public class Graph<T> implements GraphInterface<T> {
 
     /**
      * computes, displays, and returns breadth-first traversal of this graph
-     * traversal: ABDEGFHCI (013465728) TODO? should we somehow display the letters instead of indices?
+     * traversal: ABDEGFHCI (013465728)
      * @return a queue of elements traversed in order
      */
     public String breadthFirst(int start) {
-    
         Queue<Integer> vertTraversal = new LinkedList<>();
         String traversalString = "";
         boolean[] visited = new boolean[labels.length];
@@ -142,7 +141,7 @@ public class Graph<T> implements GraphInterface<T> {
 
     /**
      * computes, displays, and returns depth-first traversal of this graph
-     * traversal: AEHIFCBDG (047852136) TODO? should we somehow display the letters instead of indices?
+     * traversal: AEHIFCBDG (047852136)
      * @return a stack of elements traversed in order
      */
     public String depthFirst(int start) {
@@ -177,8 +176,6 @@ public class Graph<T> implements GraphInterface<T> {
             }
         }
         return traversalOrder;
-
-    } //end depthFirst2
-
+    }
 
 }

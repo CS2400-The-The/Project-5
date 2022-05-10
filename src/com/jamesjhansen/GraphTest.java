@@ -1,11 +1,9 @@
 package com.jamesjhansen;
 
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * TODO
  * contains unit tests for methods in Graph class
  * 
  * 1. Random 9 node Graph
@@ -23,9 +21,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class GraphTest {
     
-    //Random 9 vertices graph
+    // Random 9 vertices graph
     public static void graph1(Graph graph1) {
-
         graph1.setLabel(0, "A");
         graph1.setLabel(1, "B");
         graph1.setLabel(2, "C");
@@ -48,17 +45,14 @@ public class GraphTest {
         graph1.addEdge(6, 8);
         graph1.addEdge(8, 1);
         graph1.addEdge(8, 2);
-
     }
 
-    //5 Vertices graph, everything is connectecd to everything 
+    // 5 Vertices graph, everything is connectecd to everything
     public static void graph2(Graph graph1) {
-
         graph1.setLabel(0, "A");
         graph1.setLabel(1, "B");
         graph1.setLabel(2, "C");
         graph1.setLabel(3, "D");
-
 
         graph1.addEdge(0, 1);
         graph1.addEdge(0, 2);
@@ -75,11 +69,9 @@ public class GraphTest {
         graph1.addEdge(3, 0);
         graph1.addEdge(3, 1);
         graph1.addEdge(3, 2);
-
-
     }
 
-    //4 vertices graph, 3 nodes connecting and one disconnected
+    // 4 vertices graph, 3 nodes connecting and one disconnected
     public static void graph3(Graph graph1) {
 
         graph1.setLabel(0, "A");
@@ -89,23 +81,19 @@ public class GraphTest {
 
         graph1.addEdge(0, 1);
         graph1.addEdge(1, 2);
-
-
     }
 
-    //4 Vertices, nothing connected
+    // 4 Vertices, nothing connected
     public static void graph4(Graph graph1) {
 
         graph1.setLabel(0, "A");
         graph1.setLabel(1, "B");
         graph1.setLabel(2, "C");
         graph1.setLabel(3, "D");
-
     }
 
-    //9 vertices with one connecting line
+    // 9 vertices with one connecting line
     public static void graph5(Graph graph1) {
-
         graph1.setLabel(0, "A");
         graph1.setLabel(1, "B");
         graph1.setLabel(2, "C");
@@ -124,10 +112,9 @@ public class GraphTest {
         graph1.addEdge(5, 6);
         graph1.addEdge(6, 7);
         graph1.addEdge(7, 8);
-
     }
 
-    //4 vertices, full cycle
+    // 4 vertices, full cycle
     public static void graph6(Graph graph1) {
 
         graph1.setLabel(0, "A");
@@ -139,12 +126,7 @@ public class GraphTest {
         graph1.addEdge(1, 2);
         graph1.addEdge(2, 3);
         graph1.addEdge(3, 0);
-
-
     }
-
-    //Empty Graph Will be initialized but not setup
-
 
     @Test
     void breadthFirst() {
@@ -261,10 +243,8 @@ public class GraphTest {
         String resultant6 = testGraph6.breadthFirst(0);
         System.out.println("Resulting traversal order: " + resultant6 +"\n");
         assertTrue(resultant6.equals(expected6));
-
-
-
     }
+
     @Test
     void depthFirst() {
 
@@ -380,12 +360,5 @@ public class GraphTest {
         String resultant6 = testGraph6.depthFirst(0);
         System.out.println("Resulting traversal order: " + resultant6 +"\n");
         assertTrue(resultant6.equals(expected6));
-
-
     }
-
-    
-
-
-
 }
